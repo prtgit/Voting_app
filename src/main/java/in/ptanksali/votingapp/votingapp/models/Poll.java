@@ -16,7 +16,7 @@ import javax.persistence.OneToMany;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-public class Polls {
+public class Poll {
 	@Id@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(unique=true, nullable=false)
 	private int id;
@@ -24,11 +24,22 @@ public class Polls {
 	
 	@JsonIgnore
 	@OneToMany(mappedBy="poll", cascade = CascadeType.ALL)
-	private Collection<Topics> topics = new ArrayList<Topics>();
-	public Collection<Topics> getTopics() {
+	private Collection<Topic> topics = new ArrayList<Topic>();
+	
+	@JsonIgnore
+	@OneToMany(mappedBy="poll", cascade = CascadeType.ALL)
+	private Collection<Vote> votes = new ArrayList<Vote>();
+	
+	public Collection<Vote> getVotes() {
+		return votes;
+	}
+	public void setVotes(Collection<Vote> votes) {
+		this.votes = votes;
+	}
+	public Collection<Topic> getTopics() {
 		return topics;
 	}
-	public void setTopics(Collection<Topics> topics) {
+	public void setTopics(Collection<Topic> topics) {
 		this.topics = topics;
 	}
 	public int getId() {

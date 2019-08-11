@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import in.ptanksali.votingapp.votingapp.models.Polls;
+import in.ptanksali.votingapp.votingapp.models.Poll;
 import in.ptanksali.votingapp.votingapp.services.*;
 
 @RestController
@@ -20,19 +20,19 @@ public class PollsController {
 	private PollsService pollsService;
 	
 	@RequestMapping(value="/polls")
-	public List<Polls> getAllPolls(){
+	public List<Poll> getAllPolls(){
 		System.out.println("Prax Tanksali");
-		List<Polls> polls = pollsService.get();
+		List<Poll> polls = pollsService.get();
 		return polls;
 	}
 	
 	@RequestMapping(value="/polls/{id}", produces = {"application/JSON"})
-	public Polls getPoll(@PathVariable("id") int id) {
+	public Poll getPoll(@PathVariable("id") int id) {
 		return pollsService.get(id);
 	}
 	
 	@PostMapping(value="/polls")
-	public void createPoll(@RequestBody Polls poll){
+	public void createPoll(@RequestBody Poll poll){
 		pollsService.save(poll);
 	}
 	

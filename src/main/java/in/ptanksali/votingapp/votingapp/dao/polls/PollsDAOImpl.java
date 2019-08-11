@@ -19,22 +19,22 @@ public class PollsDAOImpl implements PollsDAO{
 	@Autowired
 	private EntityManager entityManager;
 	@Override
-	public List<Polls> get() {
+	public List<Poll> get() {
 		Session session = entityManager.unwrap(Session.class);
-		Query query = session.createQuery("from Polls");
-		List<Polls> polls = (List<Polls>)query.list();
+		Query query = session.createQuery("from Poll");
+		List<Poll> polls = (List<Poll>)query.list();
 		return polls;
 	}
 
 	@Override
-	public Polls get(int id) {
+	public Poll get(int id) {
 		Session session = entityManager.unwrap(Session.class);
-		Polls p = (Polls)session.get(Polls.class, id);
+		Poll p = (Poll)session.get(Poll.class, id);
 		return p;
 	}
 
 	@Override
-	public void save(Polls poll) {
+	public void save(Poll poll) {
 		Session session = entityManager.unwrap(Session.class);
 		session.save(poll);
 		//session.getTransaction().commit();

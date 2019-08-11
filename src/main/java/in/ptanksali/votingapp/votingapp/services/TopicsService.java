@@ -20,18 +20,17 @@ public class TopicsService {
 	private TopicsDAO topicsDAO;
 	
 	@Transactional
-	public List<Topics> get(int pollId){
+	public List<Topic> get(int pollId){
 		return topicsDAO.get(pollId);
 	}
 	
 	@Transactional
-	public void save(Topics topic, int pollId) {
+	public void save(Topic topic, int pollId) {
 		topicsDAO.save(topic, pollId);
 	}
 	
-	@Transactional
-	public void vote(int id) {
-		topicsDAO.vote(id);
-	}
+	/*
+	 * @Transactional public void vote(int id) { topicsDAO.vote(id); }
+	 */
 
 }

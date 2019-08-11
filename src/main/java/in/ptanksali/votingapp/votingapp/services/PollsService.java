@@ -22,17 +22,17 @@ public class PollsService {
 	private PollsDAO pollsDAO;
 
 	@Transactional
-	public List<Polls> get() {
+	public List<Poll> get() {
 		return pollsDAO.get();
 	}
 	
 	@Transactional
-	public Polls get(int id) {
+	public Poll get(int id) {
 		return pollsDAO.get(id);
 	}
 	
 	@Transactional
-	public void save(Polls poll) {
+	public void save(Poll poll) {
 		pollsDAO.save(poll);
 	}
 	/*

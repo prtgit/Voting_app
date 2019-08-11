@@ -19,18 +19,18 @@ public class TopicsController {
 	private TopicsService topicsService;
 	
 	@RequestMapping(value="/polls/{id}/topics")
-	public List<Topics> getTopics(@PathVariable("id") int pollId){
+	public List<Topic> getTopics(@PathVariable("id") int pollId){
 		return topicsService.get(pollId);
 	}
 	
 	@PostMapping(value = "/polls/{id}/topics")
-	public void addTopic(@RequestBody Topics topic, @PathVariable(name = "id") int id) {
+	public void addTopic(@RequestBody Topic topic, @PathVariable(name = "id") int id) {
 		topicsService.save(topic, id);
 	}
-	
-	@PutMapping(value = "/polls/{id}/topics/{topic_id}")
-	public void voteForTopic(@PathVariable("id") int pollId, @PathVariable("topic_id") int topicId) {
-		topicsService.vote(topicId);
-	}
+	/*
+	 * @PostMapping(value = "/polls/{id}/topics/{topic_id}") public void
+	 * voteForTopic(@PathVariable("id") int userId, @PathVariable("topic_id") int
+	 * topicId) { topicsService.vote(topicId); }
+	 */
 
 }

@@ -18,29 +18,28 @@ public class TopicsDAOImpl implements TopicsDAO{
 	private EntityManager entityManager;
 
 	@Override
-	public List<Topics> get(int pollId) {
+	public List<Topic> get(int pollId) {
 		Session session = entityManager.unwrap(Session.class);
-		Polls p = (Polls)session.get(Polls.class,pollId);
-		List<Topics> topics = (List<Topics>)p.getTopics();
+		Poll p = (Poll)session.get(Poll.class,pollId);
+		List<Topic> topics = (List<Topic>)p.getTopics();
 		return topics;
 	}
 
 	@Override
-	public void save(Topics topic, int pollId) {
+	public void save(Topic topic, int pollId) {
 		Session session = entityManager.unwrap(Session.class);
-		Polls p = (Polls)session.get(Polls.class,pollId);
+		Poll p = (Poll)session.get(Poll.class,pollId);
 		topic.setPoll(p);
 		session.save(topic);
 		
 	}
 
-	@Override
-	public void vote(int id) {
-		Session session = entityManager.unwrap(Session.class);
-		Topics t = (Topics)session.get(Topics.class, id);
-		t.setVotes(t.getVotes()+1);
-		session.update(t);
-	}
+	/*
+	 * @Override public void vote(int id) { Session session =
+	 * entityManager.unwrap(Session.class); Topic t =
+	 * (Topic)session.get(Topic.class, id); t.setVotes(t.getVotes()+1);
+	 * session.update(t); }
+	 */
 
 	
 
